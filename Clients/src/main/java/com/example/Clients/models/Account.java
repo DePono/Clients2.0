@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "account_type", schema = "public", catalog = "postgres")
-public class AccountType {
+@Table(name = "accounts", schema = "public", catalog = "postgres")
+public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_account_type", nullable = false, length = 10)
-    private String idAccountType;
+    @Column(name = "id", nullable = false, length = 10)
+    private String id;
     @Basic
     @Column(name = "name_account_type", nullable = false, length = 50)
     private String nameAccountType;

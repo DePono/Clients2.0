@@ -29,5 +29,5 @@ public class Client {
     @JoinColumn(name = "id_company_fk", referencedColumnName = "id_company", nullable = false)
     private Company companyByIdCompanyFk;
     @OneToMany(mappedBy = "clientByIdClientFk")
-    private Collection<SystemStewartPlatform> systemStewartPlatformsByIdClient;
+    private Collection<System> systemStewartPlatformsByIdClient;
 }

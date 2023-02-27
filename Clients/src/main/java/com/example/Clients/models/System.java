@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "system_stewart_platform", schema = "public", catalog = "postgres")
-public class SystemStewartPlatform {
+@Table(name = "systems", schema = "public", catalog = "postgres")
+public class System {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_system_stewart_platform", nullable = false)
-    private int idSystemStewartPlatform;
+    @Column(name = "id", nullable = false)
+    private int id;
     @Basic
     @Column(name = "title", nullable = false, length = 50)
     private String title;
@@ -23,9 +23,9 @@ public class SystemStewartPlatform {
     @Column(name = "time_update_system", nullable = false)
     private Timestamp timeUpdateSystem;
     @ManyToOne
-    @JoinColumn(name = "id_client_fk", referencedColumnName = "id_client", nullable = false)
+    @JoinColumn(name = "id_client", referencedColumnName = "id_client", nullable = false)
     private Client clientByIdClientFk;
     @ManyToOne
-    @JoinColumn(name = "id_stewart_platform", referencedColumnName = "id_stewart_platform", nullable = false)
-    private StewartPlatform stewartPlatformByIdStewartPlatform;
+    @JoinColumn(name = "id_stewart", referencedColumnName = "id_stewart", nullable = false)
+    private Stewart stewartPlatformByIdStewart;
 }

@@ -4,12 +4,15 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "company", schema = "public", catalog = "postgres")
+@Table(name = "companies", schema = "public", catalog = "postgres")
 public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_company", nullable = false)
+    @Column(name = "id", nullable = false)
     private int idCompany;
+    @Basic
+    @Column(name = "id_account", nullable = false, length = -1)
+    private String idAccountTypeFk;
     @Basic
     @Column(name = "title", nullable = false, length = 50)
     private String title;
@@ -28,6 +31,6 @@ public class Company {
     @OneToMany(mappedBy = "companyByIdCompanyFk")
     private Collection<Client> clientsByIdCompany;
     @ManyToOne
-    @JoinColumn(name = "id_account_type_fk", referencedColumnName = "id_account_type", nullable = false)
-    private AccountType accountTypeByIdAccountTypeFk;
+    @JoinColumn(name = "id_account", referencedColumnName = "id_account", nullable = false)
+    private Account accountId;
 }

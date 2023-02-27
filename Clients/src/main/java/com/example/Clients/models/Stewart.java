@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "stewart_platform", schema = "public", catalog = "postgres")
-public class StewartPlatform {
+@Table(name = "stewarts", schema = "public", catalog = "postgres")
+public class Stewart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_stewart_platform", nullable = false)
@@ -24,6 +24,6 @@ public class StewartPlatform {
     private int portPlatform;
     @OneToMany(mappedBy = "stewartPlatformByIdStewartPlatformFk")
     private Collection<LawForPlatform> lawForPlatformsByIdStewartPlatform;
-    @OneToMany(mappedBy = "stewartPlatformByIdStewartPlatform")
-    private Collection<SystemStewartPlatform> systemStewartPlatformsByIdStewartPlatform;
+    @OneToMany(mappedBy = "stewartPlatformByIdStewart")
+    private Collection<System> systemStewartPlatformsById;
 }
