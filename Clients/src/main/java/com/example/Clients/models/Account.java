@@ -1,8 +1,14 @@
 package com.example.Clients.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Collection;
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "accounts", schema = "public", catalog = "postgres")
 public class Account {
@@ -10,11 +16,10 @@ public class Account {
     @Id
     @Column(name = "id", nullable = false, length = 10)
     private String id;
-    @Basic
-    @Column(name = "name_account_type", nullable = false, length = 50)
-    private String nameAccountType;
-    @Basic
+    @Column(name = "title", nullable = false, length = 50)
+    private String title;
     @Column(name = "description_account", nullable = false, length = 100)
     private String descriptionAccount;
-    @OneToMany(mappedBy = "accountTypeByIdAccountTypeFk")
-    private Collection<Company> companiesByIdAccountType;}
+    @OneToMany(mappedBy = "accountByIdAccount")
+    private Collection<Company> companyById;
+}

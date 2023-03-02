@@ -1,4 +1,4 @@
 package com.example.Clients.controllers;
 
-public class SystemController {
+public class LawController {
 }

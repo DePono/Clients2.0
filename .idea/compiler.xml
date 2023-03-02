@@ -10,5 +10,9 @@
         <module name="Clients.Clients.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Clients.Clients.main~1" target="11" />
+      <module name="Clients.Clients.test~1" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

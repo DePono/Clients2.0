@@ -1,31 +1,33 @@
 package com.example.Clients.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "systems", schema = "public", catalog = "postgres")
-public class System {
+public class Syctem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    private int id;
-    @Basic
+    private Integer id;
     @Column(name = "title", nullable = false, length = 50)
     private String title;
-    @Basic
     @Column(name = "description_system", nullable = false, length = 100)
     private String descriptionSystem;
-    @Basic
     @Column(name = "time_create_system", nullable = false)
     private Timestamp timeCreateSystem;
-    @Basic
     @Column(name = "time_update_system", nullable = false)
     private Timestamp timeUpdateSystem;
     @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id_client", nullable = false)
-    private Client clientByIdClientFk;
+    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    private Client clientByIdClient;
     @ManyToOne
-    @JoinColumn(name = "id_stewart", referencedColumnName = "id_stewart", nullable = false)
-    private Stewart stewartPlatformByIdStewart;
+    @JoinColumn(name = "id_stewart_platform", referencedColumnName = "id", nullable = false)
+    private Stewart stewartByIdStewartPlatform;
 }

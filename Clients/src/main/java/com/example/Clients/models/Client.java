@@ -1,33 +1,39 @@
 package com.example.Clients.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Collection;
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
-@Table(name = "client", schema = "public", catalog = "postgres")
+@Table(name = "clients", schema = "public", catalog = "postgres")
 public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_client", nullable = false)
-    private int idClient;
-    @Basic
+    @Column(name = "id", nullable = false)
+    private int id;
+
     @Column(name = "username", nullable = false, length = 50)
     private String username;
-    @Basic
+
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
-    @Basic
+
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
-    @Basic
-    @Column(name = "email_user", nullable = false, length = 50)
-    private String emailUser;
-    @Basic
+
+    @Column(name = "email", nullable = false, length = 50)
+    private String email;
+
     @Column(name = "phone_number", nullable = false, length = 50)
     private String phoneNumber;
     @ManyToOne
-    @JoinColumn(name = "id_company_fk", referencedColumnName = "id_company", nullable = false)
-    private Company companyByIdCompanyFk;
-    @OneToMany(mappedBy = "clientByIdClientFk")
-    private Collection<System> systemStewartPlatformsByIdClient;
+    @JoinColumn(name = "id_company", referencedColumnName = "id", nullable = false)
+    private Company companyByIdCompany;
+    @OneToMany(mappedBy = "clientByIdClient")
+    private Collection<System> systemById;
 }
