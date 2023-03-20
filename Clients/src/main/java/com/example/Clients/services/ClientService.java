@@ -14,14 +14,22 @@ import java.util.List;
 public class ClientService {
     private final ClientRepository clientRepository;
 
-    public List<Client> list() {
+    public List<Client> listClients(String email) {
+        if (email != null) return clientRepository.findByEmail(email);
         return clientRepository.findAll();
     }
-    public boolean createClient(Client client) {
+
+    public void saveClient(Client client) {
         String email = client.getEmail();
-        if (clientRepository.findByEmail(email) != null) return false;
+        if (clientRepository.findByEmail(email) != null) return;
         log.info("Saving new User with email: {}", email);
         clientRepository.save(client);
-        return true;
+    }
+
+    public Client getClientById(Integer id) {
+        return clientRepository.findById(id).orElse(null);
+    }
+
+    public void deleteClient(Integer id) {
     }
 }

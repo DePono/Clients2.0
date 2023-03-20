@@ -15,23 +15,22 @@ import java.util.Collection;
 public class Stewart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
-    private int id;
-
+    @Column(name = "id")
+    private Integer id;
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-    @Column(name = "description_platform", nullable = false, length = 100)
-    private String descriptionPlatform;
+    @Column(name = "description", nullable = false, length = 100)
+    private String description;
 
-    @Column(name = "ip_address_platform", nullable = false, length = 50)
-    private String ipAddressPlatform;
+    @Column(name = "ip_address", nullable = false, length = 50)
+    private String ipAddress;
 
-    @Column(name = "port_platform", nullable = false)
-    private int portPlatform;
+    @Column(name = "port", nullable = false)
+    private int port;
 
     @OneToMany(mappedBy = "stewartByIdStewart")
     private Collection<Law> lawById;
     @OneToMany(mappedBy = "stewartByIdStewartPlatform")
-    private Collection<System> systemById;
+    private Collection<Cyctem> cyctemById;
 }

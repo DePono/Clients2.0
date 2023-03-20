@@ -29,11 +29,11 @@ public class Client {
     @Column(name = "email", nullable = false, length = 50)
     private String email;
 
-    @Column(name = "phone_number", nullable = false, length = 50)
-    private String phoneNumber;
+    @Column(name = "phone", nullable = false, length = 50)
+    private String phone;
     @ManyToOne
-    @JoinColumn(name = "id_company", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_company", referencedColumnName = "id")
     private Company companyByIdCompany;
     @OneToMany(mappedBy = "clientByIdClient")
-    private Collection<System> systemById;
+    private Collection<Cyctem> cyctemById;
 }

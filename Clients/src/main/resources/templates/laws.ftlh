@@ -5,19 +5,19 @@
 </head>
 <body>
 <h1>PlayStew</h1><hr>
-<h4>Список платформ</h4>
+<h4>Список законов управления</h4>
 <form action="/" method="get">
-    Поиск по платформам: <label>
+    Поиск по законам: <label>
         <input type="text" name="title">
     </label><br>
     <input type="submit" value="Поиск"/>
 </form>
-<#list stewarts as stewart>
+<#list laws as law>
     <div>
-        <p><b>${stewart.title}</b> <a href="/stewart/${stewart.id}">Подробнее...</a></p>
+        <p><b>${law.title}</b> <a href="/law/${law.id}">Подробнее...</a></p>
     </div>
 <#else>
-    <h3>Платформ нет</h3>
+    <h3>Законов нет</h3>
 </#list>
 </body>
 </html>

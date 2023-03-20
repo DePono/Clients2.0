@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,19 +21,20 @@ public class Company {
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-    @Column(name = "description_company", nullable = false, length = 50)
-    private String descriptionCompany;
-    @Column(name = "address_company", nullable = false, length = 100)
-    private String addressCompany;
+    @Column(name = "description", nullable = false, length = 50)
+    private String description;
+    @Column(name = "city", nullable = false, length = 100)
+    private String city;
 
-    @Column(name = "email_company", nullable = false, length = 50)
-    private String emailCompany;
+    @Column(name = "email", nullable = false, length = 50)
+    private String email;
 
-    @Column(name = "phone_number_company", nullable = false, length = 50)
-    private String phoneNumberCompany;
+    @Column(name = "phone", nullable = false, length = 50)
+    private String phone;
     @OneToMany(mappedBy = "companyByIdCompany")
     private Collection<Client> clientById;
     @ManyToOne
-    @JoinColumn(name = "id_account", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "type_account", referencedColumnName = "id", nullable = false)
     private Account accountByIdAccount;
+
 }

@@ -18,8 +18,8 @@ public class Account {
     private String id;
     @Column(name = "title", nullable = false, length = 50)
     private String title;
-    @Column(name = "description_account", nullable = false, length = 100)
-    private String descriptionAccount;
+    @Column(name = "description", nullable = false, length = 100)
+    private String description;
     @OneToMany(mappedBy = "accountByIdAccount")
     private Collection<Company> companyById;
 }

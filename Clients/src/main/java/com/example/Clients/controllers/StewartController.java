@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class StewartController {
     private final StewartService stewartService;
-
-    @GetMapping("/")
+   @GetMapping("/stewarts")
     public String stewarts(@RequestParam(name = "title", required = false) String title, Model model) {
         model.addAttribute("stewarts", stewartService.listStewart(title));
         return "stewarts";
