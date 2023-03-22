@@ -12,11 +12,6 @@ import java.util.Collection;
 @Entity
 @Table(name = "clients", schema = "public", catalog = "postgres")
 public class Client {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id", nullable = false)
-    private int id;
-
     @Column(name = "username", nullable = false, length = 50)
     private String username;
 
@@ -28,7 +23,7 @@ public class Client {
 
     @Column(name = "email", nullable = false, length = 50)
     private String email;
-
+    @Id
     @Column(name = "phone", nullable = false, length = 50)
     private String phone;
     @ManyToOne

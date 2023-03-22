@@ -23,6 +23,18 @@ public class LawsEntity {
     @Basic
     @Column(name = "time_update_law_plat", nullable = false)
     private Timestamp timeUpdateLawPlat;
+    @Basic
+    @Column(name = "law_type", nullable = false, length = 50)
+    private String lawType;
+    @Basic
+    @Column(name = "time_create_law", nullable = false)
+    private Timestamp timeCreateLaw;
+    @Basic
+    @Column(name = "time_update_law", nullable = false)
+    private Timestamp timeUpdateLaw;
+    @ManyToOne
+    @JoinColumn(name = "id_stewart", referencedColumnName = "port", nullable = false)
+    private StewartsEntity stewartsByIdStewart;
 
     public int getId() {
         return id;
@@ -75,5 +87,37 @@ public class LawsEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, idStewart, lawTypePlat, timeCreateLawPlat, timeUpdateLawPlat);
+    }
+
+    public String getLawType() {
+        return lawType;
+    }
+
+    public void setLawType(String lawType) {
+        this.lawType = lawType;
+    }
+
+    public Timestamp getTimeCreateLaw() {
+        return timeCreateLaw;
+    }
+
+    public void setTimeCreateLaw(Timestamp timeCreateLaw) {
+        this.timeCreateLaw = timeCreateLaw;
+    }
+
+    public Timestamp getTimeUpdateLaw() {
+        return timeUpdateLaw;
+    }
+
+    public void setTimeUpdateLaw(Timestamp timeUpdateLaw) {
+        this.timeUpdateLaw = timeUpdateLaw;
+    }
+
+    public StewartsEntity getStewartsByIdStewart() {
+        return stewartsByIdStewart;
+    }
+
+    public void setStewartsByIdStewart(StewartsEntity stewartsByIdStewart) {
+        this.stewartsByIdStewart = stewartsByIdStewart;
     }
 }

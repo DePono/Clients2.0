@@ -1,6 +1,7 @@
 package com.example.Clients.models;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +15,7 @@ public class CompaniesEntity {
     @Column(name = "id_account", nullable = false, length = -1)
     private String idAccount;
     @Basic
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title", nullable = false, length = 500)
     private String title;
     @Basic
     @Column(name = "description_company", nullable = false, length = 50)
@@ -31,6 +32,27 @@ public class CompaniesEntity {
     @ManyToOne
     @JoinColumn(name = "id_account", referencedColumnName = "id", nullable = false)
     private AccountsEntity accountsByIdAccount;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "phone", nullable = false, length = -1)
+    private String phone;
+    @Basic
+    @Column(name = "type_account", nullable = false, length = -1)
+    private String typeAccount;
+    @Basic
+    @Column(name = "description", nullable = false, length = 400)
+    private String description;
+    @Basic
+    @Column(name = "city", nullable = false, length = 100)
+    private String city;
+    @Basic
+    @Column(name = "email", nullable = false, length = 50)
+    private String email;
+    @OneToMany(mappedBy = "companiesByIdCompany")
+    private Collection<ClientsEntity> clientsByPhone;
+    @ManyToOne
+    @JoinColumn(name = "type_account", referencedColumnName = "title", nullable = false)
+    private AccountsEntity accountsByTypeAccount;
 
     public int getId() {
         return id;
@@ -107,5 +129,61 @@ public class CompaniesEntity {
 
     public void setAccountsByIdAccount(AccountsEntity accountsByIdAccount) {
         this.accountsByIdAccount = accountsByIdAccount;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getTypeAccount() {
+        return typeAccount;
+    }
+
+    public void setTypeAccount(String typeAccount) {
+        this.typeAccount = typeAccount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Collection<ClientsEntity> getClientsByPhone() {
+        return clientsByPhone;
+    }
+
+    public void setClientsByPhone(Collection<ClientsEntity> clientsByPhone) {
+        this.clientsByPhone = clientsByPhone;
+    }
+
+    public AccountsEntity getAccountsByTypeAccount() {
+        return accountsByTypeAccount;
+    }
+
+    public void setAccountsByTypeAccount(AccountsEntity accountsByTypeAccount) {
+        this.accountsByTypeAccount = accountsByTypeAccount;
     }
 }

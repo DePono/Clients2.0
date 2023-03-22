@@ -11,14 +11,21 @@ public class AccountsEntity {
     @Id
     @Column(name = "id", nullable = false, length = 10)
     private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Basic
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title", nullable = false, length = -1)
     private String title;
     @Basic
-    @Column(name = "description_account", nullable = false, length = 100)
+    @Column(name = "description_account", nullable = false, length = -1)
     private String descriptionAccount;
     @OneToMany(mappedBy = "accountsByIdAccount")
     private Collection<CompaniesEntity> companiesById;
+    @Basic
+    @Column(name = "subscription_time", nullable = false, length = -1)
+    private String subscriptionTime;
+    @OneToMany(mappedBy = "accountsByTypeAccount")
+    private Collection<CompaniesEntity> companiesByTitle;
 
     public String getId() {
         return id;
@@ -63,5 +70,21 @@ public class AccountsEntity {
 
     public void setCompaniesById(Collection<CompaniesEntity> companiesById) {
         this.companiesById = companiesById;
+    }
+
+    public String getSubscriptionTime() {
+        return subscriptionTime;
+    }
+
+    public void setSubscriptionTime(String subscriptionTime) {
+        this.subscriptionTime = subscriptionTime;
+    }
+
+    public Collection<CompaniesEntity> getCompaniesByTitle() {
+        return companiesByTitle;
+    }
+
+    public void setCompaniesByTitle(Collection<CompaniesEntity> companiesByTitle) {
+        this.companiesByTitle = companiesByTitle;
     }
 }

@@ -13,11 +13,6 @@ import java.util.Collection;
 @Entity
 @Table(name = "companies", schema = "public", catalog = "postgres")
 public class Company {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id", nullable = false)
-    private int id;
-
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
@@ -28,7 +23,7 @@ public class Company {
 
     @Column(name = "email", nullable = false, length = 50)
     private String email;
-
+    @Id
     @Column(name = "phone", nullable = false, length = 50)
     private String phone;
     @OneToMany(mappedBy = "companyByIdCompany")
@@ -36,5 +31,4 @@ public class Company {
     @ManyToOne
     @JoinColumn(name = "type_account", referencedColumnName = "id", nullable = false)
     private Account accountByIdAccount;
-
 }

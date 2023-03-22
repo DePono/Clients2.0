@@ -13,10 +13,7 @@ import java.util.Collection;
 @Entity
 @Table(name = "stewarts", schema = "public", catalog = "postgres")
 public class Stewart {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id")
-    private Integer id;
+
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
@@ -25,7 +22,7 @@ public class Stewart {
 
     @Column(name = "ip_address", nullable = false, length = 50)
     private String ipAddress;
-
+    @Id
     @Column(name = "port", nullable = false)
     private int port;
 

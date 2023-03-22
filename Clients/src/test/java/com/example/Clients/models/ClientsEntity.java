@@ -12,7 +12,7 @@ public class ClientsEntity {
     @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "id_company", nullable = false)
+    @Column(name = "id_company", nullable = false, length = -1)
     private int idCompany;
     @Basic
     @Column(name = "username", nullable = false, length = 50)
@@ -31,6 +31,18 @@ public class ClientsEntity {
     private String phoneNumber;
     @OneToMany(mappedBy = "clientsByIdClient")
     private Collection<SystemsEntity> systemsById;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "phone", nullable = false, length = -1)
+    private String phone;
+    @Basic
+    @Column(name = "email", nullable = false, length = 50)
+    private String email;
+    @ManyToOne
+    @JoinColumn(name = "id_company", referencedColumnName = "phone", nullable = false)
+    private CompaniesEntity companiesByIdCompany;
+    @OneToMany(mappedBy = "clientsByIdClient")
+    private Collection<CyctemsEntity> cyctemsByPhone;
 
     public int getId() {
         return id;
@@ -42,6 +54,10 @@ public class ClientsEntity {
 
     public int getIdCompany() {
         return idCompany;
+    }
+
+    public void setIdCompany(String idCompany) {
+        this.idCompany = idCompany;
     }
 
     public void setIdCompany(int idCompany) {
@@ -107,5 +123,37 @@ public class ClientsEntity {
 
     public void setSystemsById(Collection<SystemsEntity> systemsById) {
         this.systemsById = systemsById;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public CompaniesEntity getCompaniesByIdCompany() {
+        return companiesByIdCompany;
+    }
+
+    public void setCompaniesByIdCompany(CompaniesEntity companiesByIdCompany) {
+        this.companiesByIdCompany = companiesByIdCompany;
+    }
+
+    public Collection<CyctemsEntity> getCyctemsByPhone() {
+        return cyctemsByPhone;
+    }
+
+    public void setCyctemsByPhone(Collection<CyctemsEntity> cyctemsByPhone) {
+        this.cyctemsByPhone = cyctemsByPhone;
     }
 }

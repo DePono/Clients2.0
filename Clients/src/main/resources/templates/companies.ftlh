@@ -37,11 +37,6 @@
     Номер телефона: <label>
         <input type="number" name="phone"/>
     </label><br><br>
-    <label for="accounts">Выберите тип аккаунта</label>
-    <label>
-        <select>th:object='accounts' th:field="*{id}" id="accounts">
-        <option>each="accounts: "</option></select>
-    </label>
     <input type="submit" value="Добавить компанию"/>
 </form>
 </body>

@@ -25,6 +25,20 @@ public class StewartsEntity {
     private int portPlatform;
     @OneToMany(mappedBy = "stewartsByIdStewartPlatform")
     private Collection<SystemsEntity> systemsById;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "port", nullable = false)
+    private int port;
+    @Basic
+    @Column(name = "description", nullable = false, length = 100)
+    private String description;
+    @Basic
+    @Column(name = "ip_address", nullable = false, length = 50)
+    private String ipAddress;
+    @OneToMany(mappedBy = "stewartsByIdStewartPlatform")
+    private Collection<CyctemsEntity> cyctemsByPort;
+    @OneToMany(mappedBy = "stewartsByIdStewart")
+    private Collection<LawsEntity> lawsByPort;
 
     public int getId() {
         return id;
@@ -85,5 +99,45 @@ public class StewartsEntity {
 
     public void setSystemsById(Collection<SystemsEntity> systemsById) {
         this.systemsById = systemsById;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
+    public Collection<CyctemsEntity> getCyctemsByPort() {
+        return cyctemsByPort;
+    }
+
+    public void setCyctemsByPort(Collection<CyctemsEntity> cyctemsByPort) {
+        this.cyctemsByPort = cyctemsByPort;
+    }
+
+    public Collection<LawsEntity> getLawsByPort() {
+        return lawsByPort;
+    }
+
+    public void setLawsByPort(Collection<LawsEntity> lawsByPort) {
+        this.lawsByPort = lawsByPort;
     }
 }
