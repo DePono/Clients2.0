@@ -6,29 +6,31 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
-
+import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @Table(name = "companies", schema = "public", catalog = "postgres")
 public class Company {
-    @Column(name = "title", nullable = false, length = 50)
+    @Id
+    @Column(name = "phone", nullable = false)
+    private String phone;
+    @Basic
+    @Column(name = "title", nullable = false, length = 500)
     private String title;
-
-    @Column(name = "description", nullable = false, length = 50)
+    @Basic
+    @Column(name = "description", nullable = false, length = 400)
     private String description;
+    @Basic
     @Column(name = "city", nullable = false, length = 100)
     private String city;
-
+    @Basic
     @Column(name = "email", nullable = false, length = 50)
     private String email;
-    @Id
-    @Column(name = "phone", nullable = false, length = 50)
-    private String phone;
-    @OneToMany(mappedBy = "companyByIdCompany")
-    private Collection<Client> clientById;
+    @OneToMany(mappedBy = "owner")
+    private Collection<Client> clients;
     @ManyToOne
-    @JoinColumn(name = "type_account", referencedColumnName = "id", nullable = false)
-    private Account accountByIdAccount;
+    @JoinColumn(name = "type_account", referencedColumnName = "title", nullable = false)
+    private Account accountsByTypeAccount;
 }

@@ -6,15 +6,9 @@
 <body>
 <h1>PlayStew</h1><hr>
 <h4>Список платформ</h4>
-<form action="/" method="get">
-    Поиск по платформам: <label>
-        <input type="text" name="title">
-    </label><br>
-    <input type="submit" value="Поиск"/>
-</form>
 <#list stewarts as stewart>
     <div>
-        <p><b>${stewart.title}</b> <a href="/stewart/${stewart.id}">Подробнее...</a></p>
+        <p><b>${stewart.title}</b> <a href="/stewarts/${stewart.port}">Подробнее...</a></p>
     </div>
 <#else>
     <h3>Платформ нет</h3>

@@ -14,7 +14,7 @@
 </form>
 <#list laws as law>
     <div>
-        <p><b>${law.title}</b> <a href="/law/${law.id}">Подробнее...</a></p>
+        <p><b>${law.lawType}</b> <a href="/law/${law.id}">Подробнее...</a></p>
     </div>
 <#else>
     <h3>Законов нет</h3>

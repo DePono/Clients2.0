@@ -1,6 +1,5 @@
 package com.example.Clients.controllers;
 
-import com.example.Clients.models.Client;
 import com.example.Clients.models.Cyctem;
 import com.example.Clients.services.CyctemService;
 import lombok.RequiredArgsConstructor;
@@ -15,32 +14,32 @@ import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
-public class CyctemController {
+public class CyctemsController {
     private final CyctemService cyctemService;
 
    @GetMapping("/cyctems")
-    public String cyctems(@RequestParam(name = "title", required = false) String title, Model model) {
-        model.addAttribute("cyctems", cyctemService.listCyctems(title));
+    public String cyctems(String title, Model model) {
+        model.addAttribute("cyctems", cyctemService.findAll(title));
         return "cyctems";
     }
 
     @GetMapping("/cyctem/{id}")
-    public String cyctemInfo(@PathVariable Integer id, Model model) {
+    public String info(@PathVariable Integer id, Model model) {
         Cyctem cyctem = cyctemService.getCyctemById(id);
         model.addAttribute("cyctem", cyctem);
-        return "client-info";
+        return "cyctem-info";
     }
 
     @PostMapping("/cyctem/create")
-    public String saveCyctem(Cyctem cyctem) throws IOException {
-        cyctemService.saveCyctem(cyctem);
-        return "redirect:/";
+    public String save(Cyctem cyctem) throws IOException {
+        cyctemService.save(cyctem);
+        return "redirect:/cyctems";
     }
 
     @PostMapping("/cyctem/delete/{id}")
-    public String deleteCyctem(@PathVariable Integer id) {
-        cyctemService.deleteCyctem(id);
-        return "redirect:/";
+    public String delete(@PathVariable Integer id) {
+        cyctemService.delete(id);
+        return "redirect:/cyctems";
     }
 }
 

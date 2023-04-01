@@ -1,7 +1,7 @@
 package com.example.Clients.services;
 
 import com.example.Clients.models.Account;
-import com.example.Clients.repositories.AccountRepository;
+import com.example.Clients.repositories.AccountsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -11,14 +11,14 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class AccountService {
-    private final AccountRepository accountRepository;
+    private final AccountsRepository accountsRepository;
 
-    public List<Account> listAccounts(String title) {
-        return accountRepository.findAll();
+    public List<Account> findAll() {
+        return accountsRepository.findAll();
     }
 
-    public Account getAccountById(Integer id) {
-        return accountRepository.findById(id).orElse(null);
+    public Account getAccountById(String title) {
+        return accountsRepository.findById(title).orElse(null);
     }
 }
 

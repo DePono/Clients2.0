@@ -13,21 +13,24 @@ import java.util.List;
 public class StewartService {
     private final StewartRepository stewartRepository;
 
-    public List<Stewart> listStewart(String title) {
-        if (title != null) return stewartRepository.findByTitle(title);
+    public List<Stewart> findAll() {
         return stewartRepository.findAll();
     }
 
-    public void saveStewart(Stewart stewart) {
+    public void save(Stewart stewart) {
         log.info("Saving new {}", stewart);
         stewartRepository.save(stewart);
     }
+    public void update(int port, Stewart updatedStewart) {
+        updatedStewart.setPort(port);
+        stewartRepository.save(updatedStewart);
+    }
 
-    public void deleteStewart(Integer id) {
+    public void delete(int id) {
         stewartRepository.deleteById(id);
     }
 
-    public Stewart getStewartById(Integer id) {
+    public Stewart getStewartById(int id) {
         return stewartRepository.findById(id).orElse(null);
     }
 }

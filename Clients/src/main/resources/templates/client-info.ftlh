@@ -11,12 +11,12 @@
 <h1>PlayStew</h1><hr>
 <h4>Подробная информация о клинете</h4>
 <b>Username: </b>${client.username}<br>
-<b>Имя: </b>${client.lastName}<br>
-<b>Фамилия: </b>${client.firstName}<br>
+<b>Имя: </b>${client.name}<br>
+<b>Фамилия: </b>${client.surname}<br>
 <b>Почта: </b>${client.email}<br>
 <b>Телефон: </b>${client.phone}<br>
 <hr>
-<form action="/client/delete/${client.id}" method="post">
+<form action="/client/delete/${client.phone}" method="post">
     <input type="submit" value="Удалить клиента"/>
 </form>
 </body>

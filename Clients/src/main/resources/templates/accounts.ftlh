@@ -8,7 +8,7 @@
 <h4>Информация про типы аккаунтов</h4>
 <#list accounts as account>
     <div>
-        <p><b>${account.title}</b> | ${account.description}</p>
+        <p><b>${account.title}</b> | ${account.descriptionAccount}</p>
     </div>
 </#list>
 <hr>

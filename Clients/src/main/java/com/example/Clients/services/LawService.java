@@ -13,13 +13,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LawService {
     private final LawRepository lawRepository;
-    public List<Law> listLaws(String title) {
+    public List<Law> findAll() {
         return lawRepository.findAll();
     }
 
-    public void saveLaw(Law law) {
-        String title = law.getTitle();
-        log.info("Saving new Laws with title: {}", title);
+    public void save(Law law) {
+        String lawType = law.getLawType();
+        log.info("Saving new Laws with title: {}", lawType);
         lawRepository.save(law);
     }
 
@@ -27,6 +27,7 @@ public class LawService {
         return lawRepository.findById(id).orElse(null);
     }
 
-    public void deleteLaw(Integer id) {
+    public void delete(Integer id) {
+        lawRepository.deleteById(id);
     }
 }

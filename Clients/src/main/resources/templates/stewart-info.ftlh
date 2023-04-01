@@ -15,7 +15,7 @@
 <b>Адрес IP: </b>${stewarts.ipAddress}<br>
 <b>Порт: </b>${stewarts.port}<br>
 <hr>
-<form action="/stewart/delete/${stewarts.id}" method="post">
+<form action="/stewarts/delete/${stewarts.port}" method="post">
     <input type="submit" value="Удалить платформу"/>
 </form>
 </body>

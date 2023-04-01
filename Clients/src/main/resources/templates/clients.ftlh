@@ -8,7 +8,7 @@
 <h4>Список клиентов</h4>
 <#list clients as client>
     <div>
-        <p><b>${client.username}</b> <a href="/client/${client.id}">Подробнее...</a></p>
+        <p><b>${client.username}</b> <a href="/client/${client.phone}">Подробнее...</a></p>
     </div>
 <#else>
     <h3>Клиентов нет</h3>

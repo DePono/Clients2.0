@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -13,10 +14,15 @@ import java.util.Collection;
 @Table(name = "accounts", schema = "public", catalog = "postgres")
 public class Account {
     @Id
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title", nullable = false, length = -1)
     private String title;
-    @Column(name = "description", nullable = false, length = 100)
-    private String description;
-    @OneToMany(mappedBy = "accountByIdAccount")
-    private Collection<Company> companyById;
+    @Basic
+    @Column(name = "description_account", nullable = false, length = -1)
+    private String descriptionAccount;
+    @Basic
+    @Column(name = "subscription_time", nullable = false, length = -1)
+    private String subscriptionTime;
+    @OneToMany(mappedBy = "accountsByTypeAccount")
+    private Collection<Company> companiesByTitle;
+
 }

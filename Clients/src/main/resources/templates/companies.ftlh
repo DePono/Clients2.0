@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <title>PlayStew</title>
 </head>
@@ -7,21 +7,21 @@
 <h1>PlayStew</h1><hr>
 <h4>Список компаний</h4>
 <form action="/company" method="get">
-    Поиск по компаниям: <label>
-        <input type="text" name="title">
+    Поиск по типу аккаунтов: <label>
+        <input type="text" name="accountsByTypeAccount">
     </label><br>
     <input type="submit" value="Поиск"/>
 </form>
 <#list companies as company>
     <div>
-        <p><b>${company.title}</b> <a href="/company/${company.id}">Подробнее...</a></p>
+        <p><b>${company.title}</b> <a href="/company/${company.phone}">Подробнее...</a></p>
     </div>
 <#else>
     <h3>Компаний нет</h3>
 </#list>
 <hr>
 <h3>Создать новую компанию</h3>
-<form action="/company/create" th:method="post">
+<form action="/company/create" method="post">
     Название компании: <label>
         <input type="text" name="title"/>
     </label><br><br>
@@ -35,9 +35,16 @@
         <input type="text" name="email"/>
     </label><br><br>
     Номер телефона: <label>
-        <input type="number" name="phone"/>
+        <input type="text" name="phone"/>
     </label><br><br>
-    <input type="submit" value="Добавить компанию"/>
+    Аккаунт:
+    <label for="acc"></label><select name="accountsByTypeAccount" id="acc">
+            <option value="select">Выберете тип аккаунта</option>
+            <option value="BASIC">Базовый</option>
+            <option value="PROFESSIONAL">Профессиональный</option>
+            <option value="PREMIUM">Премиум</option>
+        </select>
+        <input type="submit" value="Добавить компанию" />
 </form>
 </body>
 </html>

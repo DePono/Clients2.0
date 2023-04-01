@@ -1,5 +1,4 @@
 package com.example.Clients.controllers;
-
 import com.example.Clients.models.Stewart;
 import com.example.Clients.services.StewartService;
 import lombok.RequiredArgsConstructor;
@@ -11,29 +10,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequiredArgsConstructor
-public class StewartController {
+public class StewartsController {
     private final StewartService stewartService;
    @GetMapping("/stewarts")
-    public String stewarts(@RequestParam(name = "title", required = false) String title, Model model) {
-        model.addAttribute("stewarts", stewartService.listStewart(title));
+    public String stewarts(Model model) {
+        model.addAttribute("stewarts", stewartService.findAll());
         return "stewarts";
     }
 
-    @GetMapping("/stewart/{id}")
+    @GetMapping("/stewarts/{id}")
     public String stewartInfo(@PathVariable Integer id, Model model) {
         model.addAttribute("stewarts", stewartService.getStewartById(id));
         return "stewart-info";
     }
 
-    @PostMapping("/stewart/create")
+    @PostMapping("/stewarts/create")
     public String createStewart(Stewart stewart) {
-        stewartService.saveStewart(stewart);
-        return "redirect:/";
+        stewartService.save(stewart);
+        return "redirect:/stewarts";
     }
 
-    @PostMapping("/stewart/delete/{id}")
+    @PostMapping("/stewarts/delete/{id}")
     public String deleteStewart(@PathVariable Integer id) {
-        stewartService.deleteStewart(id);
-        return "redirect:/";
+        stewartService.delete(id);
+        return "redirect:/stewarts";
     }
 }

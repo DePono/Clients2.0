@@ -12,23 +12,24 @@ import java.util.Collection;
 @Entity
 @Table(name = "clients", schema = "public", catalog = "postgres")
 public class Client {
+    @Id
+    @Column(name = "phone", nullable = false, length = -1)
+    private String phone;
+    @Basic
     @Column(name = "username", nullable = false, length = 50)
     private String username;
-
-    @Column(name = "first_name", nullable = false, length = 50)
-    private String firstName;
-
-    @Column(name = "last_name", nullable = false, length = 50)
-    private String lastName;
-
+    @Basic
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
+    @Basic
+    @Column(name = "surname", nullable = false, length = 50)
+    private String surname;
+    @Basic
     @Column(name = "email", nullable = false, length = 50)
     private String email;
-    @Id
-    @Column(name = "phone", nullable = false, length = 50)
-    private String phone;
     @ManyToOne
-    @JoinColumn(name = "id_company", referencedColumnName = "id")
-    private Company companyByIdCompany;
-    @OneToMany(mappedBy = "clientByIdClient")
-    private Collection<Cyctem> cyctemById;
+    @JoinColumn(name = "id_company", referencedColumnName = "phone", nullable = false)
+    private Company owner;
+    @OneToMany(mappedBy = "clientsByIdClient")
+    private Collection<Cyctem> cyctemsByPhone;
 }

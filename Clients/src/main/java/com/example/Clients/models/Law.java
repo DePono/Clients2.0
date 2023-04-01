@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -16,16 +17,16 @@ public class Law {
     @Id
     @Column(name = "id", nullable = false)
     private int id;
-
-    @Column(name = "title", nullable = false, length = 50)
-    private String title;
-
+    @Basic
+    @Column(name = "law_type", nullable = false, length = 50)
+    private String lawType;
+    @Basic
     @Column(name = "time_create_law", nullable = false)
     private Timestamp timeCreateLaw;
-
+    @Basic
     @Column(name = "time_update_law", nullable = false)
     private Timestamp timeUpdateLaw;
     @ManyToOne
-    @JoinColumn(name = "id_stewart", referencedColumnName = "id", nullable = false)
-    private Stewart stewartByIdStewart;
+    @JoinColumn(name = "id_stewart", referencedColumnName = "port", nullable = false)
+    private Stewart stewartsByIdStewart;
 }

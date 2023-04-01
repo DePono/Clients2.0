@@ -16,7 +16,14 @@
 <b>Почта: </b>${company.email}<br>
 <b>Телефон: </b>${company.phone}<br>
 <hr>
-<form action="/company/delete/${company.id}" method="post">
+<#list clients as client>
+    <div>
+        <p><b>${client.username}</b> <a href="/client/${client.phone}">Подробнее...</a></p>
+    </div>
+<#else>
+    <h3>Клиентов нет</h3>
+</#list>
+<form action="/company/delete/${company.phone}" method="post">
     <input type="submit" value="Удалить компанию"/>
 </form>
 </body>

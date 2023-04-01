@@ -14,17 +14,17 @@ import java.util.List;
 public class CyctemService {
     private final CyctemRepository cyctemRepository;
 
-    public List<Cyctem> listCyctems(String title) {
+    public List<Cyctem> findAll(String title) {
         if (title != null) return cyctemRepository.findByTitle(title);
         return cyctemRepository.findAll();
     }
 
-    public void saveCyctem(Cyctem cyctem) {
+    public void save(Cyctem cyctem) {
         log.info("Saving new {}", cyctem);
         cyctemRepository.save(cyctem);
     }
 
-    public void deleteCyctem(Integer id) {
+    public void delete(Integer id) {
         cyctemRepository.deleteById(id);
     }
 
