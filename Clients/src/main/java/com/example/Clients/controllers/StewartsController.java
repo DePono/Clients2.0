@@ -19,19 +19,19 @@ public class StewartsController {
     }
 
     @GetMapping("/stewarts/{id}")
-    public String stewartInfo(@PathVariable Integer id, Model model) {
-        model.addAttribute("stewarts", stewartService.getStewartById(id));
+    public String info(@PathVariable Integer id, Model model) {
+        model.addAttribute("stewart", stewartService.getStewartById(id));
         return "stewart-info";
     }
 
     @PostMapping("/stewarts/create")
-    public String createStewart(Stewart stewart) {
+    public String create(Stewart stewart) {
         stewartService.save(stewart);
         return "redirect:/stewarts";
     }
 
     @PostMapping("/stewarts/delete/{id}")
-    public String deleteStewart(@PathVariable Integer id) {
+    public String delete(@PathVariable Integer id) {
         stewartService.delete(id);
         return "redirect:/stewarts";
     }

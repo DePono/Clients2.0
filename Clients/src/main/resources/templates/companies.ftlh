@@ -6,12 +6,6 @@
 <body>
 <h1>PlayStew</h1><hr>
 <h4>Список компаний</h4>
-<form action="/company" method="get">
-    Поиск по типу аккаунтов: <label>
-        <input type="text" name="accountsByTypeAccount">
-    </label><br>
-    <input type="submit" value="Поиск"/>
-</form>
 <#list companies as company>
     <div>
         <p><b>${company.title}</b> <a href="/company/${company.phone}">Подробнее...</a></p>

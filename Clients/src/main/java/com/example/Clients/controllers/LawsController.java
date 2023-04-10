@@ -22,19 +22,19 @@ public class LawsController {
     }
 
     @GetMapping("/law/{id}")
-    public String lawInfo(@PathVariable Integer id, Model model) {
+    public String info(@PathVariable Integer id, Model model) {
         model.addAttribute("laws",lawService.getLawById(id));
         return "law-info";
     }
 
     @PostMapping("/law/create")
-    public String saveLaw(Law law){
+    public String save(Law law){
         lawService.save(law);
         return "redirect:/";
     }
 
     @PostMapping("/law/delete/{id}")
-    public String deleteLaw(@PathVariable Integer id) {
+    public String delete(@PathVariable Integer id) {
         lawService.delete(id);
         return "redirect:/";
     }

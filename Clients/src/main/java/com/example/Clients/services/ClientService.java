@@ -3,6 +3,7 @@ package com.example.Clients.services;
 import com.example.Clients.models.Client;
 import com.example.Clients.models.Company;
 import com.example.Clients.repositories.ClientRepository;
+import com.example.Clients.repositories.CompanyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientService {
     private final ClientRepository clientRepository;
+    private final CompanyRepository companyRepository;
 
     public List<Client> findAll(String email) {
         if (email != null) return clientRepository.findByEmail(email);
@@ -22,9 +24,6 @@ public class ClientService {
     }
 
     public void save(Client client) {
-        String email = client.getEmail();
-        if (clientRepository.findByEmail(email) != null) return;
-        log.info("Saving new User with email: {}", email);
         clientRepository.save(client);
     }
 
@@ -34,6 +33,11 @@ public class ClientService {
 
     public void delete(String id) {
         clientRepository.deleteById(id);
+    }
+
+    public void update(String phone, Client updadetClient) {
+        updadetClient.setPhone(phone);
+        clientRepository.save(updadetClient);
     }
 
     public List<Client> findByCompany(Company owner) {

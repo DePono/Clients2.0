@@ -26,5 +26,27 @@
 <form action="/company/delete/${company.phone}" method="post">
     <input type="submit" value="Удалить компанию"/>
 </form>
+<h3>Добавить нового клиента</h3>
+<form action="/client/create" method="post">
+    Телефон: <label>
+        <input type="text" name="phone"/>
+    </label><br><br>
+    Компания: <label>
+        <input type="text" name="id_company"/>
+    </label><br><br>
+    Username: <label>
+        <input type="text" name="city"/>
+    </label><br><br>
+    Имя: <label>
+        <input type="text" name="name"/>
+    </label><br><br>
+    Фамилия: <label>
+        <input type="text" name="surname"/>
+    </label><br><br>
+    Почта: <label>
+        <input type="text" name="email"/>
+    </label><br><br>
+    <input type="submit" value="Добавить клиента" />
+</form>
 </body>
 </html>
