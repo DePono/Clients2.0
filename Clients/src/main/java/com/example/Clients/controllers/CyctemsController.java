@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 
@@ -20,14 +19,15 @@ public class CyctemsController {
    @GetMapping("/cyctems")
     public String cyctems(String title, Model model) {
         model.addAttribute("cyctems", cyctemService.findAll(title));
-        return "cyctems";
+        return "cyctems/cyctems";
     }
 
     @GetMapping("/cyctem/{id}")
-    public String info(@PathVariable Integer id, Model model) {
+    public String info(@PathVariable String id, Model model) {
         Cyctem cyctem = cyctemService.getCyctemById(id);
         model.addAttribute("cyctem", cyctem);
-        return "cyctem-info";
+        model.addAttribute("stewarts",cyctemService.getStewartByCyctemId(id));
+        return "cyctems/cyctem-info";
     }
 
     @PostMapping("/cyctem/create")
@@ -37,7 +37,7 @@ public class CyctemsController {
     }
 
     @PostMapping("/cyctem/delete/{id}")
-    public String delete(@PathVariable Integer id) {
+    public String delete(@PathVariable String id) {
         cyctemService.delete(id);
         return "redirect:/cyctems";
     }

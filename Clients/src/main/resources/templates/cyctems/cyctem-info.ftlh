@@ -15,7 +15,14 @@
 <b>Время создания: </b>${cyctem.timeCreate}<br>
 <b>Время обновления: </b>${cyctem.timeUpdate}<br>
 <hr>
-<form action="/cyctem/delete/${cyctem.id}" method="post">
+<#list stewarts as stewart>
+    <div>
+        <p><b>${stewart.title}</b> <a href="/stewart/${stewart.port}">Подробнее...</a></p>
+    </div>
+<#else>
+    <h3>Клиентов нет</h3>
+</#list>
+<form action="/cyctem/delete/${cyctem.title}" method="post">
     <input type="submit" value="Удалить систему"/>
 </form>
 </body>

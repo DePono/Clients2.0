@@ -1,6 +1,8 @@
 package com.example.Clients.services;
 
 import com.example.Clients.models.Account;
+import com.example.Clients.models.Client;
+import com.example.Clients.models.Company;
 import com.example.Clients.repositories.AccountsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,10 @@ public class AccountService {
 
     public Account getAccountById(String title) {
         return accountsRepository.findById(title).orElse(null);
+    }
+
+    public List<Account> findByCompany(Company title) {
+        return accountsRepository.findAccountByCompaniesByTitle(title);
     }
 }
 

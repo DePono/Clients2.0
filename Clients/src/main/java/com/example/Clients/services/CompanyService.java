@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.net.StandardProtocolFamily;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,11 @@ public class CompanyService {
     public Company getCompanyById(String id) {
         return companyRepository.findById(id).orElse(null);
     }
+    public void update(String id, Company updatedCompany) {
+        updatedCompany.setPhone(id);
+        companyRepository.save(updatedCompany);
+    }
+
 
     public List<Client> getClientByCompanyId(String phone) {
         Optional<Company> company = companyRepository.findById(phone);

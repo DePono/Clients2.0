@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,18 +16,14 @@ import java.util.Objects;
 public class Law {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "title", nullable = false)
+    private String id;
     @Basic
-    @Column(name = "law_type", nullable = false, length = 50)
-    private String lawType;
+    @Column(name = "condition", nullable = false, length = -1)
+    private String condition;
     @Basic
-    @Column(name = "time_create_law", nullable = false)
-    private Timestamp timeCreateLaw;
-    @Basic
-    @Column(name = "time_update_law", nullable = false)
-    private Timestamp timeUpdateLaw;
-    @ManyToOne
-    @JoinColumn(name = "id_stewart", referencedColumnName = "port", nullable = false)
-    private Stewart stewartsByIdStewart;
+    @Column(name = "description", nullable = false,length = -1)
+    private String description;
+    @OneToMany(mappedBy = "lawsByTitleLaw")
+    private Collection<Stewart> stewartsByTitle;
 }

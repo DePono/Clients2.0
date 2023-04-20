@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface LawRepository extends JpaRepository<Law, Integer> {
-    List<Law> findByLawType(String lawType);
+public interface LawRepository extends JpaRepository<Law, String> {
+    List<Law> findLawById(String title);
 }

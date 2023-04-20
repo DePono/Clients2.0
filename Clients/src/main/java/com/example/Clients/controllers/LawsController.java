@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 @Controller
 @RequiredArgsConstructor
 public class LawsController {
@@ -18,25 +18,26 @@ public class LawsController {
     @GetMapping("/laws")
     public String laws( Model model) {
         model.addAttribute("laws", lawService.findAll());
-        return "laws";
+        return "laws/laws";
     }
 
     @GetMapping("/law/{id}")
-    public String info(@PathVariable Integer id, Model model) {
+    public String info(@PathVariable String id, Model model) {
         model.addAttribute("laws",lawService.getLawById(id));
-        return "law-info";
+        model.addAttribute("stewarts",lawService.getStewartByLaw(id));
+        return "laws/law-info";
     }
 
     @PostMapping("/law/create")
     public String save(Law law){
         lawService.save(law);
-        return "redirect:/";
+        return "redirect:/laws";
     }
 
     @PostMapping("/law/delete/{id}")
-    public String delete(@PathVariable Integer id) {
+    public String delete(@PathVariable String id) {
         lawService.delete(id);
-        return "redirect:/";
+        return "redirect:/laws";
     }
 }
 

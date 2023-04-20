@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,10 +16,7 @@ import java.util.Objects;
 public class Cyctem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
-    private int id;
-    @Basic
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title", nullable = false)
     private String title;
     @Basic
     @Column(name = "description", nullable = false, length = 100)
@@ -32,8 +30,7 @@ public class Cyctem {
     @ManyToOne
     @JoinColumn(name = "id_client", referencedColumnName = "phone", nullable = false)
     private Client clientsByIdClient;
-    @ManyToOne
-    @JoinColumn(name = "id_stewart_platform", referencedColumnName = "port", nullable = false)
-    private Stewart stewartsByIdStewartPlatform;
+    @OneToMany(mappedBy = "owner")
+    private Collection<Stewart> stewarts;
 
 }

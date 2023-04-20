@@ -10,12 +10,11 @@
 <body>
 <h1>PlayStew</h1><hr>
 <h4>Подробная информация о платформах</h4>
-<b>Название: </b>${stewarts.title}<br>
-<b>Описание: </b>${stewarts.description}<br>
-<b>Адрес IP: </b>${stewarts.ipAddress}<br>
-<b>Порт: </b>${stewarts.port}<br>
+<b>Название: </b>${stewart.title}<br>
+<b>Описание: </b>${stewart.description}<br>
+<b>Адрес ИП: </b>${stewart.ipAddress}<br>
 <hr>
-<form action="/stewarts/delete/${stewarts.port}" method="post">
+<form action="/stewart/delete/${stewart.port}" method="post">
     <input type="submit" value="Удалить платформу"/>
 </form>
 </body>

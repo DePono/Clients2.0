@@ -17,14 +17,14 @@ public class ClientsController {
     @GetMapping("/clients")
     public String clients(String username, Model model) {
         model.addAttribute("clients", clientService.findAll(username));
-        return "clients";
+        return "clients/clients";
     }
 
     @GetMapping("/client/{phone}")
     public String info(@PathVariable String phone, Model model) {
         Client client = clientService.getClientById(phone);
         model.addAttribute("client", client);
-        return "client-info";
+        return "clients/client-info";
     }
 
     @PostMapping("/client/create")

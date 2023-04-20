@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
     <title>PlayStew</title>
 </head>
@@ -8,10 +8,11 @@
 <h4>Список платформ</h4>
 <#list stewarts as stewart>
     <div>
-        <p><b>${stewart.title}</b> <a href="/stewarts/${stewart.port}">Подробнее...</a></p>
+        <p><b>${stewart.port}</b> <a href="/stewart/${stewart.port}">Подробнее...</a></p>
     </div>
 <#else>
     <h3>Платформ нет</h3>
 </#list>
+<hr>
 </body>
 </html>

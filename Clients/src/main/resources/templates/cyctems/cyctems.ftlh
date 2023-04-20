@@ -8,7 +8,7 @@
 <h4>Список систем</h4>
 <#list cyctems as cyctem>
     <div>
-        <p><b>${cyctem.title}</b> <a href="/cyctem/${cyctem.id}">Подробнее...</a></p>
+        <p><b>${cyctem.title}</b> <a href="/cyctem/${cyctem.title}">Подробнее...</a></p>
     </div>
 <#else>
     <h3>Систем нет</h3>

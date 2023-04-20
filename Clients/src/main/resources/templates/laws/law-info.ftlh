@@ -10,12 +10,19 @@
 <body>
 <h1>PlayStew</h1><hr>
 <h4>Подробная информация о законах</h4>
-<b>Тип: </b>${laws.lawType}<br>
-<b>Время создания: </b>${laws.timeCreateLaw}<br>
-<b>Время запуска: </b>${laws.timeUpdateLaw}<br>
+<b>Тип: </b>${laws.id}<br>
+<b>Время создания: </b>${laws.description}<br>
+<b>Время запуска: </b>${laws.condition}<br>
 <hr>
 <form action="/laws/delete/${laws.id}" method="post">
     <input type="submit" value="Удалить закон"/>
 </form>
+<#list stewarts as stewart>
+    <div>
+        <p><b>${stewart.port}</b> <a href="/client/${stewart.port}">Подробнее...</a></p>
+    </div>
+<#else>
+    <h3>Клиентов нет</h3>
+</#list>
 </body>
 </html>

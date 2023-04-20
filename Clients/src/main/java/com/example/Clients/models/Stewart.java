@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Stewart {
     @Id
     @Column(name = "port", nullable = false)
-    private int port;
+    private String port;
     @Basic
     @Column(name = "title", nullable = false, length = 50)
     private String title;
@@ -25,8 +25,10 @@ public class Stewart {
     @Basic
     @Column(name = "ip_address", nullable = false, length = 50)
     private String ipAddress;
-    @OneToMany(mappedBy = "stewartsByIdStewartPlatform")
-    private Collection<Cyctem> cyctemsByPort;
-    @OneToMany(mappedBy = "stewartsByIdStewart")
-    private Collection<Law> lawsByPort;
+    @ManyToOne
+    @JoinColumn(name = "id_cyctem", referencedColumnName = "title",nullable = false)
+    private Cyctem owner;
+    @ManyToOne
+    @JoinColumn(name = "title_law", referencedColumnName = "title", nullable = false)
+    private Law lawsByTitleLaw;
 }

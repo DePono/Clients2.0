@@ -1,12 +1,16 @@
 package com.example.Clients.services;
 
+import com.example.Clients.models.Client;
+import com.example.Clients.models.Company;
 import com.example.Clients.models.Law;
+import com.example.Clients.models.Stewart;
 import com.example.Clients.repositories.LawRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -18,16 +22,19 @@ public class LawService {
     }
 
     public void save(Law law) {
-        String lawType = law.getLawType();
-        log.info("Saving new Laws with title: {}", lawType);
         lawRepository.save(law);
     }
 
-    public Law getLawById(Integer id) {
-        return lawRepository.findById(id).orElse(null);
+    public Law getLawById(String title) {
+        return lawRepository.findById(title).orElse(null);
     }
 
-    public void delete(Integer id) {
+    public void delete(String id) {
         lawRepository.deleteById(id);
+    }
+
+    public List<Stewart> getStewartByLaw(String id) {
+        Optional<Law> law = lawRepository.findById(id);
+        return law.map(value -> (List<Stewart>) value.getStewartsByTitle()).orElse(null);
     }
 }
