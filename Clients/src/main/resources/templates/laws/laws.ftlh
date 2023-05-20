@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>PlayStew</h1><hr>
-<h4>Управление законами </h4>
+<h4>Информация о доступных законах </h4>
     <#list laws as law>
         <div>
             <p><b>${law.id}</b> <a href="/law/${law.id}">Подробнее...</a></p>

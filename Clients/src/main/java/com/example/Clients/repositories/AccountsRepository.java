@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface AccountsRepository extends JpaRepository<Account, String> {
     List<Account> findByTitle(String title);
-    List<Account> findAccountByCompaniesByTitle(Company title);
 }

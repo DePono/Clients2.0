@@ -19,7 +19,7 @@
 </form>
 <#list stewarts as stewart>
     <div>
-        <p><b>${stewart.port}</b> <a href="/client/${stewart.port}">Подробнее...</a></p>
+        <p><b>${stewart.port}</b> <a href="/stewart/${stewart.port}">Подробнее...</a></p>
     </div>
 <#else>
     <h3>Клиентов нет</h3>
