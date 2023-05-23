@@ -25,20 +25,20 @@ public class CompanyService {
         companyRepository.save(company);
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         companyRepository.deleteById(id);
     }
 
-    public Company getCompanyById(String id) {
+    public Company getCompanyById(Long id) {
         return companyRepository.findById(id).orElse(null);
     }
-    public void update(String id, Company updatedCompany) {
+    public void update(Long id, Company updatedCompany) {
         updatedCompany.setPhone(id);
         companyRepository.save(updatedCompany);
     }
 
 
-    public List<Client> getClientByCompanyId(String phone) {
+    public List<Client> getClientByCompanyId(Long phone) {
         Optional<Company> company = companyRepository.findById(phone);
         return company.map(value -> (List<Client>) value.getClients()).orElse(null);
     }

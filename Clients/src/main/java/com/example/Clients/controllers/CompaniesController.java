@@ -22,7 +22,7 @@ public class CompaniesController {
     }
 
     @GetMapping("/company/{id}")
-    public String info(@PathVariable String id, Model model) {
+    public String info(@PathVariable Long id, Model model) {
         Company company = companyService.getCompanyById(id);
         model.addAttribute("company", company);
         model.addAttribute("clients",companyService.getClientByCompanyId(id));
@@ -34,17 +34,17 @@ public class CompaniesController {
         return "redirect:/companies";
     }
     @PostMapping("/company/delete/{id}")
-    public String delete(@PathVariable String id) {
+    public String delete(@PathVariable Long id) {
         companyService.delete(id);
         return "redirect:/companies";
     }
     @PatchMapping("/company/{id}")
-    public String update(@PathVariable String id, @ModelAttribute("company") Company company){
+    public String update(@PathVariable Long id, @ModelAttribute("company") Company company){
         companyService.update(id,company);
         return "companies/company-info";
     }
     @PostMapping("/company/{id}/edit")
-    public String edit(Model model, @PathVariable String id){
+    public String edit(Model model, @PathVariable Long id){
         model.addAttribute("company",companyService.getCompanyById(id));
         return "companies/edit";
     }

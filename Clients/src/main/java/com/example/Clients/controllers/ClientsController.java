@@ -21,7 +21,7 @@ public class ClientsController {
     }
 
     @GetMapping("/client/{phone}")
-    public String info(@PathVariable String phone, Model model) {
+    public String info(@PathVariable Long phone, Model model) {
         Client client = clientService.getClientById(phone);
         model.addAttribute("client", client);
         return "clients/client-info";
@@ -34,7 +34,7 @@ public class ClientsController {
     }
 
     @PostMapping("/client/delete/{id}")
-    public String delete(@PathVariable String id) {
+    public String delete(@PathVariable Long id) {
         clientService.delete(id);
         return "redirect:/clients";
     }

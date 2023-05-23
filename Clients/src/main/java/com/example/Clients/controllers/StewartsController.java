@@ -20,7 +20,7 @@ public class StewartsController {
         return "stewarts/stewarts";
     }
     @GetMapping("/stewart/{port}")
-    public String info(@PathVariable String port, Model model) {
+    public String info(@PathVariable Integer port, Model model) {
         Stewart stewart = stewartService.getStewartById(port);
         model.addAttribute("stewart", stewart);
         return "stewarts/stewart-info";
@@ -32,7 +32,7 @@ public class StewartsController {
         return "redirect:/stewarts";
     }
     @PostMapping("/stewarts/delete/{id}")
-    public String delete(@PathVariable String id) {
+    public String delete(@PathVariable Integer id) {
         stewartService.delete(id);
         return "redirect:/stewarts";
     }

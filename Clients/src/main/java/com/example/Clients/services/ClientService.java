@@ -27,15 +27,15 @@ public class ClientService {
         clientRepository.save(client);
     }
 
-    public Client getClientById(String id) {
+    public Client getClientById(Long id) {
         return clientRepository.findById(id).orElse(null);
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         clientRepository.deleteById(id);
     }
 
-    public void update(String phone, Client updadetClient) {
+    public void update(Long phone, Client updadetClient) {
         updadetClient.setPhone(phone);
         clientRepository.save(updadetClient);
     }

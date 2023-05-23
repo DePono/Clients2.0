@@ -37,8 +37,8 @@ public class CyctemService {
         return cyctemRepository.findById(id).orElse(null);
     }
 
-    public List<Stewart> getStewartByCyctemId (String port){
-        Optional<Cyctem> cyctem = cyctemRepository.findById(port);
+    public List<Stewart> getStewartByCyctemId (String title){
+        Optional<Cyctem> cyctem = cyctemRepository.findById(title);
         return cyctem.map(value -> (List<Stewart>) value.getStewarts()).orElse(null);
     }
 

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
-public interface ClientRepository extends JpaRepository <Client, String> {
+public interface ClientRepository extends JpaRepository <Client, Long> {
     List<Client> findByEmail(String email);
     List<Client> findByOwner(Company owner);
     List<Client> findClientByName(String clientName);

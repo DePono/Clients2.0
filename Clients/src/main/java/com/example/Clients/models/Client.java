@@ -14,7 +14,7 @@ import java.util.Collection;
 public class Client {
     @Id
     @Column(name = "phone", nullable = false, length = -1)
-    private String phone;
+    private Long phone;
     @Basic
     @Column(name = "username", nullable = false, length = 50)
     private String username;

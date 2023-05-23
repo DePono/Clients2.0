@@ -29,7 +29,7 @@
         <input type="text" name="email"/>
     </label><br><br>
     Номер телефона: <label>
-        <input type="text" name="phone"/>
+        <input type="number" name="phone"/>
     </label><br><br>
     Аккаунт:
     <label for="acc"></label><select name="accountsByTypeAccount" id="acc">

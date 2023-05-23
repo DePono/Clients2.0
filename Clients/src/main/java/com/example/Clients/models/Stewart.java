@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Stewart {
     @Id
     @Column(name = "port", nullable = false)
-    private String port;
+    private Integer port;
     @Basic
     @Column(name = "title", nullable = false, length = 50)
     private String title;

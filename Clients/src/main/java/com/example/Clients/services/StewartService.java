@@ -23,16 +23,16 @@ public class StewartService {
         log.info("Saving new {}", stewart);
         stewartRepository.save(stewart);
     }
-    public void update(String port, Stewart updatedStewart) {
+    public void update(Integer port, Stewart updatedStewart) {
         updatedStewart.setPort(port);
         stewartRepository.save(updatedStewart);
     }
 
-    public void delete(String id) {
+    public void delete(Integer id) {
         stewartRepository.deleteById(id);
     }
 
-    public Stewart getStewartById(String id) {
+    public Stewart getStewartById(Integer id) {
         return stewartRepository.findById(id).orElse(null);
     }
 

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface StewartRepository extends JpaRepository <Stewart, String> {
-    List<Stewart> findByPort(String port);
+public interface StewartRepository extends JpaRepository <Stewart, Integer> {
+    List<Stewart> findByPort(Integer port);
     List<Stewart> findByLawsByTitleLaw(Law law);
 
     List<Stewart> findByOwner(Cyctem owner);

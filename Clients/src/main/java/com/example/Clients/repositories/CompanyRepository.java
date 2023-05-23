@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface CompanyRepository extends JpaRepository<Company, String> {
+public interface CompanyRepository extends JpaRepository<Company, Long> {
     List<Company> findByTitle(String title);
+
     List<Company> findCompanyByAccountsByTypeAccount(Account account);
 
 }

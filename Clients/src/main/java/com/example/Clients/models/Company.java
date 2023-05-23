@@ -3,8 +3,12 @@ package com.example.Clients.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Objects;
 @AllArgsConstructor
@@ -15,7 +19,7 @@ import java.util.Objects;
 public class Company {
     @Id
     @Column(name = "phone", nullable = false)
-    private String phone;
+    private Long phone;
     @Basic
     @Column(name = "title", nullable = false, length = 500)
     private String title;
@@ -34,3 +38,4 @@ public class Company {
     @JoinColumn(name = "type_account", referencedColumnName = "title", nullable = false)
     private Account accountsByTypeAccount;
 }
+//контроль полей, редактирование, добавление в каждой старнице.
